@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8" />
+
+</head>
+
+<body>
+
+  <script>
+
+    let data;
+    let dbs = {
+      earthquakes: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson",
+      filteredPeople: "filtered_people.json",
+      armedBirbs: "https://www.reddit.com/r/birdswitharms/.json",
+      meteors: "meteors.json",
+      ek: "ek_json_poem.json",
+      do: "do_json_poem.json"
+    };
+
+
+
+    async function loadJSON(url) {
+      try {
+        let data = await fetch(url);
+        return await data.json();
+      } catch (e) {
+        throw ("Couldn't load the JSON, probably a bad URL or CORS error", e)
+      }
+    }
+
+    //pick some json from the object for example
+    //let json = dbs.ex;
+
+    let data = loadJSON(json).then(function (result) {
+      console.log(result);
+      processData(result);
+    });
+
+
+
+    function processData(data){
+      //do stuff with the data
+    }
+  </script>
+</body>
+
+</html>
